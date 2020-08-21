@@ -35,7 +35,7 @@ function heapDown(heap) {
   let temp = heap[i]
   while (2 * i + 1 < heap.length) {
     let max = 2 * i + 1
-    if (heap[2 * i + 2] && heap[2 * i + 1] < heap[2 * i + 2]) {
+    if (heap[2 * i + 1] < heap[2 * i + 2]) {
       max = 2 * i + 2
     }
     if (temp > heap[max]) {
