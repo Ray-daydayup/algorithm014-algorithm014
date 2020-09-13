@@ -23,7 +23,6 @@ var findMin = function (nums) {
 
   while (left <= right) {
     mid = Math.floor(left + (right - left) / 2)
-    console.log(left, mid, right)
     if (mid + 1 < nums.length && nums[mid] > nums[mid + 1]) return nums[mid + 1]
     if (mid - 1 >= 0 && nums[mid - 1] > nums[mid]) return nums[mid]
     if (nums[mid] < nums[0]) {
