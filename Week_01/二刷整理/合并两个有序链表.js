@@ -7,6 +7,7 @@
  * }
  */
 /**
+ * 两个指针分别指向两个链表
  * @param {ListNode} l1
  * @param {ListNode} l2
  * @return {ListNode}

@@ -1,3 +1,5 @@
+# 总结
+
 ## 数组
 
 - 数组（Array）是一种**线性表数据结构**。它用一组**连续的内存空间**，来存储一组具有相同类型的数据。（线性表：数组，链表、队列、栈；非线性表：二叉树、堆、图等）
@@ -21,86 +23,86 @@
 
 ```js
 class Node {
-	constructor(value) {
-		this.value = value
-		this.next = null
-	}
+ constructor(value) {
+  this.value = value
+  this.next = null
+ }
 }
 
 class LinkedList {
-	constructor() {
-		// 初始化头结点，存储长度
-		this.head = new Node(0)
-	}
-	/**
-	 * 尾部插入一个新元素
-	 *
-	 * @param {*} value
-	 * @memberof LinkedList
-	 */
-	push(value) {
-		const node = new Node(value)
-		let lastNode = this.head
+ constructor() {
+  // 初始化头结点，存储长度
+  this.head = new Node(0)
+ }
+ /**
+  * 尾部插入一个新元素
+  *
+  * @param {*} value
+  * @memberof LinkedList
+  */
+ push(value) {
+  const node = new Node(value)
+  let lastNode = this.head
     // 查找最后一个结点
-		while (lastNode.next !== null) {
-			lastNode = lastNode.next
-		}
-		lastNode.next = node
-		this.head.value++
-	}
-	/**
-	 * 获取某个位置的元素
-	 *
-	 * @param {*} index
-	 * @returns
-	 * @memberof LinkedList
-	 */
-	getElementAt(index) {
-		if (index > 0 && index <= this.head.value) {
-			let targetNode = this.head
-			for (let i = 1; i <= index; i++) {
-				targetNode = targetNode.next
-			}
-			return targetNode
-		}
-		return null
-	}
-	insert(value, index) {
-		const targetNode = this.getElementAt(index) // 查找要插入的位置
-		const prevNode = index === 1 ? this.head : this.getElementAt(index - 1)
-		if (targetNode === null) {
-			return false
-		}
-		const newNode = new Node(value)
-		newNode.next = targetNode
-		prevNode.next = newNode
-		this.head.value++
-		return true
-	}
-	/**
-	 * 删除某位置的元素
-	 *
-	 * @param {number} index
-	 * @returns
-	 * @memberof LinkedList
-	 */
-	removeAt(index) {
-		const targetNode = this.getElementAt(index)
-		const prevNode = index === 1 ? this.head : this.getElementAt(index - 1)
-		if (targetNode === null) {
-			return false
-		}
+  while (lastNode.next !== null) {
+   lastNode = lastNode.next
+  }
+  lastNode.next = node
+  this.head.value++
+ }
+ /**
+  * 获取某个位置的元素
+  *
+  * @param {*} index
+  * @returns
+  * @memberof LinkedList
+  */
+ getElementAt(index) {
+  if (index > 0 && index <= this.head.value) {
+   let targetNode = this.head
+   for (let i = 1; i <= index; i++) {
+    targetNode = targetNode.next
+   }
+   return targetNode
+  }
+  return null
+ }
+ insert(value, index) {
+  const targetNode = this.getElementAt(index) // 查找要插入的位置
+  const prevNode = index === 1 ? this.head : this.getElementAt(index - 1)
+  if (targetNode === null) {
+   return false
+  }
+  const newNode = new Node(value)
+  newNode.next = targetNode
+  prevNode.next = newNode
+  this.head.value++
+  return true
+ }
+ /**
+  * 删除某位置的元素
+  *
+  * @param {number} index
+  * @returns
+  * @memberof LinkedList
+  */
+ removeAt(index) {
+  const targetNode = this.getElementAt(index)
+  const prevNode = index === 1 ? this.head : this.getElementAt(index - 1)
+  if (targetNode === null) {
+   return false
+  }
 
-		prevNode.next = targetNode.next
-		this.head.value--
-		return true
-	}
-	isEmpty() {
-		return this.size() === 0
-	}
-	size() {
-		return this.head.value
-	}
+  prevNode.next = targetNode.next
+  this.head.value--
+  return true
+ }
+ isEmpty() {
+  return this.size() === 0
+ }
+ size() {
+  return this.head.value
+ }
 }
 ```
 
@@ -301,7 +303,7 @@ class Queue {
 - 双端队列是指允许两端都可以进行入队和出队操作的队列
 - 插入和删除都是 O(1) 操作
 
-### 代码实现
+### 双端队列代码实现
 
 ```js
 class Deque {
