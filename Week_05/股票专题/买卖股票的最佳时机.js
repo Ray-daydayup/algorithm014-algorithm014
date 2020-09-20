@@ -24,3 +24,23 @@ var maxProfit = function (prices) {
 }
 
 console.log(maxProfit([7, 6, 4, 3, 2, 1]))
+
+var maxProfit = function (prices) {
+  /**
+   * 遍历一次即可，只要记住当前的最小值，计算f(i)-min的最大值
+   * 然后随时更新最小值 利用reduce
+   */
+  if (prices.length < 2) return 0
+  let max = 0
+  prices.reduce((a, b) => {
+    let min = a
+    if (a > b) {
+      min = b
+    } else {
+      let gap = b - a
+      if (max < gap) max = gap
+    }
+    return min
+  })
+  return max
+}
