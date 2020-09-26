@@ -8,6 +8,7 @@ var maxProfit = function (prices) {
    * 可以拆成两个单次购买问题
    * 只卖一次获得f1
    * 卖两次则拆成两个数组去实现，获取两者之和最大值
+   * 超时
    */
   let max = 0
   for (let i = -1; i < prices.length - 1; i++) {
@@ -38,19 +39,10 @@ var maxProfit = function (prices) {
 
 var maxProfit = function (prices) {
   /**
-   * 优化：相当于两个不断滑动的窗口，约等于两个相对的栈
-   * 左边的栈一直入栈，右边的栈一直出栈
-   * 左边的栈记录最小值，每次比对差值
-   * 右边栈记录最大值，每次比对差值
-   * 求两者之和的最大
-   * 一次遍历
+   * 1. 多阶段决策、无后效性、重复子问题
+   * 2. 重复子问题:求前n个和前n-1个有关，那么f(n) = f(n-1) + (?)
+   * 3. 先定义状态，前一个状态决定着当前的状态，前一个状态如果是买入，当前状态只能是卖出或持有；还有交易次数的限制。那么定义f(n,)
    */
-  if (prices.length < 2) return 0
-  let leftSum = 0
-  let rightSum = 0
-  let max = Math.max(...prices) // 初始化右边的最大值
-  let min = prices[0] // 初始化左边的最小值
-  for (let i = 1; i < prices.length; i++) {}
 }
 // console.log(maxProfit([3, 3, 5, 0, 0, 3, 1, 4]))
 // console.log(maxProfit([1, 2, 3, 4, 5]))
