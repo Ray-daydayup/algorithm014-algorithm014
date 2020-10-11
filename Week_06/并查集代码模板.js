@@ -1,23 +1,34 @@
-/**
- * https://leetcode-cn.com/problems/friend-circles/
- * @param {number[][]} M
- * @return {number}
- */
-var findCircleNum = function (M) {
-  /**
-   * 并查集
-   * 每个人为一个集合，将互为朋友的人合为一个集合
-   * 最后集合的个数为答案
-   */
-  // 每个人为一个集合
-  const unionSet = new UnionFind(M.length)
-  for (let i = 0; i < M.length; i++) {
-    for (let j = 0; j < M[0].length; j++) {
-      //将互为朋友的人合为一个集合
-      if (M[i][j] === 1) unionSet.union(i, j)
+// 错误的
+class UnionFind {
+  constructor(n) {
+    this.count = n
+    this.parent = new Array(n)
+    for (let i = 0; i < n; i++) {
+      this.parent[i] = i
     }
   }
-  return unionSet.count
+
+  find(p) {
+    let root = p
+    while (parent[root] !== root) {
+      root = parent[root]
+    }
+    // 压缩路径
+    while (parent[p] !== p) {
+      let x = p
+      p = this.parent[p]
+      this.parent[x] = root
+    }
+    return root
+  }
+
+  union(p, q) {
+    let rootP = find(p)
+    let rootQ = find(q)
+    if (rootP === rootQ) return
+    this.parent[rootP] = rootQ
+    this.count--
+  }
 }
 
 class UnionFind {
